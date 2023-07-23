@@ -69,7 +69,7 @@ function App() {
 
   }
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingX: '24px', paddingTop:loading? '390px': '0px'  }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingX: '24px', paddingTop: loading ? '390px' : '0px' }}>
       {
         loading ? (
           <Box sx={{ paddingTop: '40px' }}>
@@ -77,16 +77,18 @@ function App() {
           </Box>
         ) : (
           <>
-            {/* <iframe src="https://giphy.com/embed/3lvqNXheb679S" width="480" height="311" allowFullScreen></iframe> */}
             {
               view === VIEW.dashboard && (
                 <Stack direction='column' sx={{
-                  pt: 40
+                  pt: 20,
+                  textAlign: 'center',
+                  gap: '20px'
                 }}>
                   <Typography variant='h4' fontWeight={600}>
                     Welcome to Your Giphy
                   </Typography>
 
+                  <iframe src="https://giphy.com/embed/l3nFh9xbJtZYc6UhO" width="480" height="360" frameBorder="0" allowFullScreen></iframe>
                   <Button variant='text' onClick={handleToIronMan} >
                     IRON MAN GIPHY
                   </Button>
@@ -126,7 +128,7 @@ function App() {
                     'center'
                   } alignItems='center' flexWrap='wrap' sx={{ gap: '10px' }}>
                     {gifData ? gifData.map(gif => (
-                      <Box sx={{ width: '480px', height: '250px', padding: '10px', overflow: 'hidden', }}>
+                      <Box key={gif.id} sx={{ width: '480px', height: '250px', padding: '10px', overflow: 'hidden', }}>
                         <iframe src={gif.embed_url} width="80%" height="80%" allowFullScreen></iframe>
                         <p>{gif.title}</p>
                       </Box>
@@ -135,7 +137,6 @@ function App() {
                   </Stack>
                 </Stack>
               )
-
             }
             {
               view === VIEW.search && (
